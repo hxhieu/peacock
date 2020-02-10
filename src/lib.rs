@@ -14,6 +14,7 @@
 pub mod error;
 pub mod graphics;
 pub mod input;
+pub mod scenegraph;
 pub mod time;
 pub mod window;
 
