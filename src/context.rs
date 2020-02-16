@@ -15,6 +15,8 @@ use crate::input::{self, KeyboardContext, MouseContext};
 use crate::time;
 use crate::State;
 
+use crate::ecs::world::WorldContext;
+
 lazy_static! {
     pub(crate) static ref SDL_TTF_CONTEXT: Sdl2TtfContext = sdl2::ttf::init().unwrap();
 }
@@ -29,6 +31,7 @@ pub struct Context {
     pub(crate) graphics: GraphicsContext,
     pub(crate) keyboard: KeyboardContext,
     pub(crate) mouse: MouseContext,
+    pub world: WorldContext,
 }
 
 impl Context {
@@ -169,6 +172,8 @@ impl<'a> ContextBuilder<'a> {
         let mut fps_tracker = VecDeque::with_capacity(200);
         fps_tracker.resize(200, 1.0 / 60.0);
 
+        let world = WorldContext::new();
+
         Ok(Context {
             sdl_context,
             canvas,
@@ -178,6 +183,7 @@ impl<'a> ContextBuilder<'a> {
             graphics: GraphicsContext::new(),
             keyboard: KeyboardContext::new(),
             mouse: MouseContext::new(),
+            world,
         })
     }
 }

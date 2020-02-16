@@ -14,9 +14,11 @@
 pub mod error;
 pub mod graphics;
 pub mod input;
-pub mod scenegraph;
 pub mod time;
 pub mod window;
+
+pub mod ecs;
+pub mod scenegraph;
 
 mod context;
 mod vector2;

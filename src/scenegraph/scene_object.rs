@@ -1,5 +1,3 @@
-use crate::graphics::Drawable;
-use crate::scenegraph::Updatable;
 use crate::Context;
 
 pub struct SceneObject {
@@ -16,12 +14,7 @@ impl SceneObject {
             children: Vec::new(),
         }
     }
-}
-
-impl Updatable for SceneObject {
-    fn update(&self, dt: f64) {}
-}
-
-impl Drawable for SceneObject {
-    fn draw(&self, ctx: &mut Context) {}
+    // TODO: using traits?
+    pub fn update(&self, _ctx: &Context) {}
+    pub fn draw(&self, _ctx: &Context, _dt: f64) {}
 }
